@@ -12,7 +12,7 @@
 <link rel="canonical" href="/nginx-allow-ips-http-authentication-for-others.html">
 
         <meta name="author" content="Matt" />
-        <meta name="keywords" content="nginx,configuration,linux,system-admin" />
+        <meta name="keywords" content="nginx,linux,configuration,system-admin" />
         <meta name="description" content="Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here&#39;s the configuration bit that does it: satisfy any; allow 192.168.1.0/24; deny all; auth_basic &#34;Restricted&#34;; auth_basic_user_file htpasswd; I just saved that as &#34;httprotect.inc&#34; in ..." />
 
         <meta property="og:site_name" content="m-collins.com" />
@@ -23,8 +23,8 @@
         <meta property="article:published_time" content="2014-09-07" />
             <meta property="article:section" content="Software" />
             <meta property="article:tag" content="nginx" />
-            <meta property="article:tag" content="configuration" />
             <meta property="article:tag" content="linux" />
+            <meta property="article:tag" content="configuration" />
             <meta property="article:tag" content="system-admin" />
             <meta property="article:author" content="Matt" />
 
@@ -73,6 +73,11 @@ m-collins.com            </a>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9">
+            <ol class="breadcrumb">
+                <li><a href="" title="m-collins.com"><i class="fa fa-home fa-lg"></i></a></li>
+                <li><a href="/category/software.html" title="Software">Software</a></li>
+                <li class="active">Nginx: Allow $IP(s), HTTP authentication for others</li>
+            </ol>
     <section id="content">
         <article>
             <header class="page-header">
@@ -100,9 +105,9 @@ m-collins.com            </a>
 <span class="label label-default">Tags</span>
 	<a href="/tag/nginx.html">nginx</a>
         /
-	<a href="/tag/configuration.html">configuration</a>
-        /
 	<a href="/tag/linux.html">linux</a>
+        /
+	<a href="/tag/configuration.html">configuration</a>
         /
 	<a href="/tag/system-admin.html">system-admin</a>
     
