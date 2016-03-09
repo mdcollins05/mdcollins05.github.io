@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>system-admin - m-collins.com</title>
+    <title>Friendly reminder to test notifications for MDADM and Smartd - m-collins.com</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -9,16 +9,25 @@
 
 
 
+<link rel="canonical" href="/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">
 
-    <meta name="author" content="Matt" />
-    <meta name="keywords" content="system-admin" />
+        <meta name="author" content="Matt" />
+        <meta name="keywords" content="mdadm,smartd,configuration,linux,system-admin" />
+        <meta name="description" content="MDADM (when devices are in the configuration): mdadm --monitor --scan --test --oneshot Smartd: Add the following to your smartd.conf at the end of the &#34;DEVICESCAN&#34; lines you want to test: -M test After that, restart your smartd service. Be sure to remove the &#34;-M test&#34; line afterwards so you ..." />
 
-    <!-- Open Graph tags -->
         <meta property="og:site_name" content="m-collins.com" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="m-collins.com"/>
-        <meta property="og:url" content=""/>
-        <meta property="og:description" content="m-collins.com"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Friendly reminder to test notifications for MDADM and Smartd"/>
+        <meta property="og:url" content="/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html"/>
+        <meta property="og:description" content="MDADM (when devices are in the configuration): mdadm --monitor --scan --test --oneshot Smartd: Add the following to your smartd.conf at the end of the &#34;DEVICESCAN&#34; lines you want to test: -M test After that, restart your smartd service. Be sure to remove the &#34;-M test&#34; line afterwards so you ..."/>
+        <meta property="article:published_time" content="2014-12-05" />
+            <meta property="article:section" content="Software" />
+            <meta property="article:tag" content="mdadm" />
+            <meta property="article:tag" content="smartd" />
+            <meta property="article:tag" content="configuration" />
+            <meta property="article:tag" content="linux" />
+            <meta property="article:tag" content="system-admin" />
+            <meta property="article:author" content="Matt" />
 
 
     <!-- Bootstrap -->
@@ -49,7 +58,7 @@ m-collins.com            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                        <li >
+                        <li class="active">
                             <a href="/category/software.html">Software</a>
                         </li>
             </ul>
@@ -65,9 +74,44 @@ m-collins.com            </a>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9">
-            <article>
-                <h2><a href="/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">Friendly reminder to test notifications for MDADM and Smartd</a></h2>
-                <div class="summary"><p>MDADM (when devices are in the configuration):</p>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html"
+                       rel="bookmark"
+                       title="Permalink to Friendly reminder to test notifications for MDADM and Smartd">
+                        Friendly reminder to test notifications for MDADM and Smartd
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2014-12-05T00:00:00-08:00"> Fri 05 December 2014</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/mdadm.html">mdadm</a>
+        /
+	<a href="/tag/smartd.html">smartd</a>
+        /
+	<a href="/tag/configuration.html">configuration</a>
+        /
+	<a href="/tag/linux.html">linux</a>
+        /
+	<a href="/tag/system-admin.html">system-admin</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>MDADM (when devices are in the configuration):</p>
 <div class="highlight"><pre><span></span>mdadm --monitor --scan --test --oneshot
 </pre></div>
 
@@ -79,29 +123,11 @@ m-collins.com            </a>
 
 
 <p>After that, restart your smartd service.</p>
-<p>Be sure to remove the "-M test" line afterwards so you ...</p>
-                    <a class="btn btn-default btn-xs" href="/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a></h2>
-                <div class="summary"><p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
-<div class="highlight"><pre><span></span>satisfy any;
-
-allow 192.168.1.0/24;
-deny all;
-
-auth_basic &quot;Restricted&quot;;
-auth_basic_user_file htpasswd;
-</pre></div>
-
-
-<p>I just saved that as "httprotect.inc" in ...</p>
-                    <a class="btn btn-default btn-xs" href="/nginx-allow-ips-http-authentication-for-others.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
+<p>Be sure to remove the "-M test" line afterwards so you won't get test notifications each time!</p>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
 
         </div>
         <div class="col-sm-3" id="sidebar">

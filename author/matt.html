@@ -10,7 +10,7 @@
 
 
 
-        <meta name="author" content="matt" />
+        <meta name="author" content="Matt" />
 
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="m-collins.com" />
@@ -64,6 +64,25 @@ m-collins.com            </a>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9">
+            <article>
+                <h2><a href="/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">Friendly reminder to test notifications for MDADM and Smartd</a></h2>
+                <div class="summary"><p>MDADM (when devices are in the configuration):</p>
+<div class="highlight"><pre><span></span>mdadm --monitor --scan --test --oneshot
+</pre></div>
+
+
+<p>Smartd:</p>
+<p>Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test:</p>
+<div class="highlight"><pre><span></span>-M test
+</pre></div>
+
+
+<p>After that, restart your smartd service.</p>
+<p>Be sure to remove the "-M test" line afterwards so you ...</p>
+                    <a class="btn btn-default btn-xs" href="/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2><a href="/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a></h2>
                 <div class="summary"><p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
@@ -134,7 +153,7 @@ auth_basic_user_file htpasswd;
    <div class="container-fluid">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy; 2014 matt
+         <div class="col-xs-10">&copy; 2014 Matt
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
