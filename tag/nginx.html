@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-    <title>Archives - m-collins.com</title>
+    <title>nginx - m-collins.com</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -10,7 +10,8 @@
 
 
 
-        <meta name="author" content="matt" />
+    <meta name="author" content="matt" />
+    <meta name="keywords" content="nginx" />
 
     <!-- Open Graph tags -->
         <meta property="og:site_name" content="m-collins.com" />
@@ -64,15 +65,25 @@ m-collins.com            </a>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9">
-    <section id="content">
-        <h1>Archives for m-collins.com</h1>
-        <div id="archives">
-                <p>
-                    <span class="categories-timestamp"><time datetime="2014-09-07T00:00:00-07:00">Sun 07 September 2014</time></span>
-                    <a href="/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a>
-                </p>
-        </div>
-    </section>
+            <article>
+                <h2><a href="/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a></h2>
+                <div class="summary"><p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
+<div class="highlight"><pre><span></span>satisfy any;
+
+allow 192.168.1.0/24;
+deny all;
+
+auth_basic &quot;Restricted&quot;;
+auth_basic_user_file htpasswd;
+</pre></div>
+
+
+<p>I just saved that as "httprotect.inc" in ...</p>
+                    <a class="btn btn-default btn-xs" href="/nginx-allow-ips-http-authentication-for-others.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>

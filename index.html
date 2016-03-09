@@ -48,6 +48,9 @@ m-collins.com            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
+                        <li >
+                            <a href="/category/software.html">Software</a>
+                        </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
@@ -61,6 +64,24 @@ m-collins.com            </a>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9">
+            <article>
+                <h2><a href="/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a></h2>
+                <div class="summary"><p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
+<div class="highlight"><pre><span></span>satisfy any;
+
+allow 192.168.1.0/24;
+deny all;
+
+auth_basic &quot;Restricted&quot;;
+auth_basic_user_file htpasswd;
+</pre></div>
+
+
+<p>I just saved that as "httprotect.inc" in ...</p>
+                    <a class="btn btn-default btn-xs" href="/nginx-allow-ips-http-authentication-for-others.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
 
         </div>
         <div class="col-sm-3" id="sidebar">
@@ -113,7 +134,7 @@ m-collins.com            </a>
    <div class="container-fluid">
       <hr>
       <div class="row">
-         <div class="col-xs-10">&copy;  matt
+         <div class="col-xs-10">&copy; 2014 matt
             &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
             <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
