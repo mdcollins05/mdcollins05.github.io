@@ -67,18 +67,14 @@
   </header>
   <div>
       <h4>MDADM (when devices are in the configuration):</h4>
-<div class="highlight"><pre>mdadm --monitor --scan --test --oneshot
-</pre></div>
-
-
+<p>:::ini
+  mdadm --monitor --scan --test --oneshot</p>
 <h4>Smartd:</h4>
 <p>Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test:</p>
-<div class="highlight"><pre>-M test
-</pre></div>
-
-
+<p>:::ini
+  -M test</p>
 <p>After that, restart your smartd service.</p>
-<p>Be sure to remove the "-M test" line afterwards so you ...</p>
+<p>Be sure to remove the "-M test" line afterwards ...</p>
       <a class="btn" href="https://m-collins.com/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html#friendly-reminder-to-test-notifications-for-mdadm-and-smartd">Continue reading</a>
   </div>
 </article>

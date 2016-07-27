@@ -67,17 +67,13 @@
   </header>
   <div>
       <p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
-<div class="highlight"><pre>satisfy any;
-
-allow 192.168.1.0/24;
-deny all;
-
-auth_basic &quot;Restricted&quot;;
-auth_basic_user_file htpasswd;
-</pre></div>
-
-
-<p>I just saved that as "httprotect.inc" in ...</p>
+<p>:::nginx
+  satisfy any;</p>
+<p>allow 192.168.1.0/24;
+  deny all;</p>
+<p>auth_basic "Restricted";
+  auth_basic_user_file htpasswd;</p>
+<p>I just saved that as "httprotect.inc ...</p>
       <a class="btn" href="https://m-collins.com/nginx-allow-ips-http-authentication-for-others.html#nginx-allow-ips-http-authentication-for-others">Continue reading</a>
   </div>
 </article>

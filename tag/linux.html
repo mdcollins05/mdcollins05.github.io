@@ -67,18 +67,14 @@
   </header>
   <div>
       <h4>MDADM (when devices are in the configuration):</h4>
-<div class="highlight"><pre>mdadm --monitor --scan --test --oneshot
-</pre></div>
-
-
+<p>:::ini
+  mdadm --monitor --scan --test --oneshot</p>
 <h4>Smartd:</h4>
 <p>Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test:</p>
-<div class="highlight"><pre>-M test
-</pre></div>
-
-
+<p>:::ini
+  -M test</p>
 <p>After that, restart your smartd service.</p>
-<p>Be sure to remove the "-M test" line afterwards so you ...</p>
+<p>Be sure to remove the "-M test" line afterwards ...</p>
       <a class="btn" href="https://m-collins.com/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html#friendly-reminder-to-test-notifications-for-mdadm-and-smartd">Continue reading</a>
   </div>
   <hr />
@@ -94,17 +90,13 @@
   </header>
   <div>
       <p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
-<div class="highlight"><pre>satisfy any;
-
-allow 192.168.1.0/24;
-deny all;
-
-auth_basic &quot;Restricted&quot;;
-auth_basic_user_file htpasswd;
-</pre></div>
-
-
-<p>I just saved that as "httprotect.inc" in ...</p>
+<p>:::nginx
+  satisfy any;</p>
+<p>allow 192.168.1.0/24;
+  deny all;</p>
+<p>auth_basic "Restricted";
+  auth_basic_user_file htpasswd;</p>
+<p>I just saved that as "httprotect.inc ...</p>
       <a class="btn" href="https://m-collins.com/nginx-allow-ips-http-authentication-for-others.html#nginx-allow-ips-http-authentication-for-others">Continue reading</a>
   </div>
 </article>
