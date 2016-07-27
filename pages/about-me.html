@@ -35,7 +35,7 @@
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://m-collins.com"/>
 
-  <title>m-collins.com &ndash; Tag: nginx</title>
+  <title>m-collins.com &ndash; About Me</title>
 </head>
 <body>
   <aside>
@@ -66,32 +66,12 @@
 
 <article>
   <header>
-    <h2><a href="https://m-collins.com/nginx-allow-ips-http-authentication-for-others.html#nginx-allow-ips-http-authentication-for-others">Nginx: Allow $IP(s), HTTP authentication for others</a></h2>
-    <p>
-      Posted on Sun 07 September 2014 in <a href="https://m-collins.com/category/software.html">Software</a>
-      &#8226; Tagged with
-      <a href="https://m-collins.com/tag/nginx.html">nginx</a>,      <a href="https://m-collins.com/tag/linux.html">linux</a>,      <a href="https://m-collins.com/tag/configuration.html">configuration</a>,      <a href="https://m-collins.com/tag/system-admin.html">system-admin</a>      &#8226; <a href="https://m-collins.com/nginx-allow-ips-http-authentication-for-others.html#disqus_thread">Leave a comment</a>
-    </p>
+    <h1 id="about-me">About Me</h1>
   </header>
   <div>
-      <p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
-<div class="highlight"><pre>satisfy any;
-
-allow 192.168.1.0/24;
-deny all;
-
-auth_basic &quot;Restricted&quot;;
-auth_basic_user_file htpasswd;
-</pre></div>
-
-
-<p>I just saved that as "httprotect.inc" in ...</p>
-      <a class="btn" href="https://m-collins.com/nginx-allow-ips-http-authentication-for-others.html#nginx-allow-ips-http-authentication-for-others">Continue reading</a>
+    <p>Test content</p>
   </div>
 </article>
-
-  <div class="pagination">
-  </div>
 
     <footer>
         <p>&copy; Matt </p>
@@ -111,15 +91,6 @@ auth_basic_user_file htpasswd;
   "image": "",
   "description": ""
 }
-</script>
-<script type="text/javascript">
-    var disqus_shortname = 'm-collins';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
 </script>
 </body>
 </html>
