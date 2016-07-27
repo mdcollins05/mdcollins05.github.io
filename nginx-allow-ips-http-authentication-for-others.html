@@ -20,11 +20,11 @@
 
 
 <meta name="author" content="Matt Collins" />
-<meta name="description" content="Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it: :::nginx satisfy any; allow 192.168.1.0/24; deny all; auth_basic "Restricted"; auth_basic_user_file htpasswd; I just saved that as "httprotect.inc ..." />
+<meta name="description" content="Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it: satisfy any; allow 192.168.1.0/24; deny all; auth_basic "Restricted"; auth_basic_user_file htpasswd; I just saved that as "httprotect.inc" in ..." />
 <meta name="keywords" content="nginx, linux, configuration, system-admin">
 <meta property="og:site_name" content="m-collins.com"/>
 <meta property="og:title" content="Nginx: Allow $IP(s), HTTP authentication for others"/>
-<meta property="og:description" content="Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it: :::nginx satisfy any; allow 192.168.1.0/24; deny all; auth_basic "Restricted"; auth_basic_user_file htpasswd; I just saved that as "httprotect.inc ..."/>
+<meta property="og:description" content="Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it: satisfy any; allow 192.168.1.0/24; deny all; auth_basic "Restricted"; auth_basic_user_file htpasswd; I just saved that as "httprotect.inc" in ..."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://m-collins.com/nginx-allow-ips-http-authentication-for-others.html"/>
 <meta property="og:type" content="article"/>
@@ -72,12 +72,16 @@
   </header>
   <div>
     <p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
-<p>:::nginx
-  satisfy any;</p>
-<p>allow 192.168.1.0/24;
-  deny all;</p>
-<p>auth_basic "Restricted";
-  auth_basic_user_file htpasswd;</p>
+<div class="highlight"><pre><span class="k">satisfy</span> <span class="s">any</span><span class="p">;</span>
+
+<span class="k">allow</span> <span class="mi">192</span><span class="s">.168.1.0/24</span><span class="p">;</span>
+<span class="k">deny</span> <span class="s">all</span><span class="p">;</span>
+
+<span class="k">auth_basic</span> <span class="s">&quot;Restricted&quot;</span><span class="p">;</span>
+<span class="k">auth_basic_user_file</span> <span class="s">htpasswd</span><span class="p">;</span>
+</pre></div>
+
+
 <p>I just saved that as "httprotect.inc" in my /etc/nginx/ directory, then do 'include httprotect.inc;' in the site-specific block(s) I want HTTP authentication. Simple and effective.</p>
 <p>Please don't forget to redirect to SSL before you ask for HTTP authentication. That's as simple as doing the redirection higher up than the 'include httprotect.inc;' line.</p>
   </div>
@@ -141,7 +145,7 @@
   },
   "image": "{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png",
   "url": "https://m-collins.com/nginx-allow-ips-http-authentication-for-others.html",
-  "description": "Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it: :::nginx satisfy any; allow 192.168.1.0/24; deny all; auth_basic "Restricted"; auth_basic_user_file htpasswd; I just saved that as "httprotect.inc ..."
+  "description": "Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it: satisfy any; allow 192.168.1.0/24; deny all; auth_basic "Restricted"; auth_basic_user_file htpasswd; I just saved that as "httprotect.inc" in ..."
 }
 </script></body>
 </html>

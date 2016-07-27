@@ -67,14 +67,18 @@
   </header>
   <div>
       <h4>MDADM (when devices are in the configuration):</h4>
-<p>:::ini
-  mdadm --monitor --scan --test --oneshot</p>
+<div class="highlight"><pre><span class="err">mdadm</span> <span class="err">--monitor</span> <span class="err">--scan</span> <span class="err">--test</span> <span class="err">--oneshot</span>
+</pre></div>
+
+
 <h4>Smartd:</h4>
 <p>Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test:</p>
-<p>:::ini
-  -M test</p>
+<div class="highlight"><pre><span class="err">-M</span> <span class="err">test</span>
+</pre></div>
+
+
 <p>After that, restart your smartd service.</p>
-<p>Be sure to remove the "-M test" line afterwards ...</p>
+<p>Be sure to remove the "-M test" line afterwards so you ...</p>
       <a class="btn" href="https://m-collins.com/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html#friendly-reminder-to-test-notifications-for-mdadm-and-smartd">Continue reading</a>
   </div>
   <hr />
@@ -90,13 +94,17 @@
   </header>
   <div>
       <p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
-<p>:::nginx
-  satisfy any;</p>
-<p>allow 192.168.1.0/24;
-  deny all;</p>
-<p>auth_basic "Restricted";
-  auth_basic_user_file htpasswd;</p>
-<p>I just saved that as "httprotect.inc ...</p>
+<div class="highlight"><pre><span class="k">satisfy</span> <span class="s">any</span><span class="p">;</span>
+
+<span class="k">allow</span> <span class="mi">192</span><span class="s">.168.1.0/24</span><span class="p">;</span>
+<span class="k">deny</span> <span class="s">all</span><span class="p">;</span>
+
+<span class="k">auth_basic</span> <span class="s">&quot;Restricted&quot;</span><span class="p">;</span>
+<span class="k">auth_basic_user_file</span> <span class="s">htpasswd</span><span class="p">;</span>
+</pre></div>
+
+
+<p>I just saved that as "httprotect.inc" in ...</p>
       <a class="btn" href="https://m-collins.com/nginx-allow-ips-http-authentication-for-others.html#nginx-allow-ips-http-authentication-for-others">Continue reading</a>
   </div>
 </article>

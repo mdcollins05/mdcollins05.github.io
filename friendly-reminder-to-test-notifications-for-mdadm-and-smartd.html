@@ -20,11 +20,11 @@
 
 
 <meta name="author" content="Matt Collins" />
-<meta name="description" content="MDADM (when devices are in the configuration): :::ini mdadm --monitor --scan --test --oneshot Smartd: Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test: :::ini -M test After that, restart your smartd service. Be sure to remove the "-M test" line afterwards ..." />
+<meta name="description" content="MDADM (when devices are in the configuration): mdadm --monitor --scan --test --oneshot Smartd: Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test: -M test After that, restart your smartd service. Be sure to remove the "-M test" line afterwards so you ..." />
 <meta name="keywords" content="mdadm, smartd, linux, configuration, system-admin">
 <meta property="og:site_name" content="m-collins.com"/>
 <meta property="og:title" content="Friendly reminder to test notifications for MDADM and Smartd"/>
-<meta property="og:description" content="MDADM (when devices are in the configuration): :::ini mdadm --monitor --scan --test --oneshot Smartd: Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test: :::ini -M test After that, restart your smartd service. Be sure to remove the "-M test" line afterwards ..."/>
+<meta property="og:description" content="MDADM (when devices are in the configuration): mdadm --monitor --scan --test --oneshot Smartd: Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test: -M test After that, restart your smartd service. Be sure to remove the "-M test" line afterwards so you ..."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://m-collins.com/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html"/>
 <meta property="og:type" content="article"/>
@@ -73,12 +73,16 @@
   </header>
   <div>
     <h4>MDADM (when devices are in the configuration):</h4>
-<p>:::ini
-  mdadm --monitor --scan --test --oneshot</p>
+<div class="highlight"><pre><span class="err">mdadm</span> <span class="err">--monitor</span> <span class="err">--scan</span> <span class="err">--test</span> <span class="err">--oneshot</span>
+</pre></div>
+
+
 <h4>Smartd:</h4>
 <p>Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test:</p>
-<p>:::ini
-  -M test</p>
+<div class="highlight"><pre><span class="err">-M</span> <span class="err">test</span>
+</pre></div>
+
+
 <p>After that, restart your smartd service.</p>
 <p>Be sure to remove the "-M test" line afterwards so you won't get test notifications each time!</p>
   </div>
@@ -143,7 +147,7 @@
   },
   "image": "{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png",
   "url": "https://m-collins.com/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html",
-  "description": "MDADM (when devices are in the configuration): :::ini mdadm --monitor --scan --test --oneshot Smartd: Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test: :::ini -M test After that, restart your smartd service. Be sure to remove the "-M test" line afterwards ..."
+  "description": "MDADM (when devices are in the configuration): mdadm --monitor --scan --test --oneshot Smartd: Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test: -M test After that, restart your smartd service. Be sure to remove the "-M test" line afterwards so you ..."
 }
 </script></body>
 </html>
