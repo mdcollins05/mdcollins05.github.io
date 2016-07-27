@@ -28,7 +28,7 @@
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://m-collins.com"/>
 
-  <title>m-collins.com &ndash; Tag: smartd</title>
+  <title>m-collins.com &ndash; Posts by: Matt Collins</title>
 </head>
 <body>
   <aside>
@@ -80,6 +80,32 @@
 <p>After that, restart your smartd service.</p>
 <p>Be sure to remove the "-M test" line afterwards so you ...</p>
       <a class="btn" href="https://m-collins.com/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html#friendly-reminder-to-test-notifications-for-mdadm-and-smartd">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="https://m-collins.com/nginx-allow-ips-http-authentication-for-others.html#nginx-allow-ips-http-authentication-for-others">Nginx: Allow $IP(s), HTTP authentication for others</a></h2>
+    <p>
+      Posted on Sun 07 September 2014 in <a href="https://m-collins.com/category/software.html">Software</a>
+      &#8226; Tagged with
+      <a href="https://m-collins.com/tag/nginx.html">nginx</a>,      <a href="https://m-collins.com/tag/linux.html">linux</a>,      <a href="https://m-collins.com/tag/configuration.html">configuration</a>,      <a href="https://m-collins.com/tag/system-admin.html">system-admin</a>      &#8226; <a href="https://m-collins.com/nginx-allow-ips-http-authentication-for-others.html#disqus_thread">Leave a comment</a>
+    </p>
+  </header>
+  <div>
+      <p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
+<div class="highlight"><pre>satisfy any;
+
+allow 192.168.1.0/24;
+deny all;
+
+auth_basic &quot;Restricted&quot;;
+auth_basic_user_file htpasswd;
+</pre></div>
+
+
+<p>I just saved that as "httprotect.inc" in ...</p>
+      <a class="btn" href="https://m-collins.com/nginx-allow-ips-http-authentication-for-others.html#nginx-allow-ips-http-authentication-for-others">Continue reading</a>
   </div>
 </article>
 
