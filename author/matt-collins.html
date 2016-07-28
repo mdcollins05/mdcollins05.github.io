@@ -69,13 +69,13 @@
   </header>
   <div>
       <h4>MDADM (when devices are in the configuration):</h4>
-<div class="highlight"><pre><span></span><span class="err">mdadm</span> <span class="err">--monitor</span> <span class="err">--scan</span> <span class="err">--test</span> <span class="err">--oneshot</span>
+<div class="highlight"><pre><span></span>mdadm --monitor --scan --test --oneshot
 </pre></div>
 
 
 <h4>Smartd:</h4>
 <p>Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test:</p>
-<div class="highlight"><pre><span></span><span class="err">-M</span> <span class="err">test</span>
+<div class="highlight"><pre><span></span>-M test
 </pre></div>
 
 
