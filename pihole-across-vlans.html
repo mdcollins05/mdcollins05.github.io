@@ -75,7 +75,7 @@
   <div>
     <p>I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules.</p>
 <p>I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration.</p>
-<p>Here's the command I ran to verify packets were making it to the pihole host (using a <code>dig testdomain.com @192.168.4.4</code>).</p>
+<p>Here's the command I ran to verify packets were making it to the pihole host (using <code>dig testdomain.com @192.168.4.4</code> as a test from the client).</p>
 <div class="highlight"><pre><span></span>tcpdump -i eth0 host 192.168.8.10 and port 53 -n -s 0 -vvv
 </pre></div>
 
