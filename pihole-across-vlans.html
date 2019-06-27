@@ -21,25 +21,25 @@
 
 
 <meta name="author" content="Matt Collins" />
-<meta name="description" content="MDADM (when devices are in the configuration): mdadm --monitor --scan --test --oneshot Smartd: Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test: -M test After that, restart your smartd service. Be sure to remove the "-M test" line afterwards so you ..." />
-<meta name="keywords" content="mdadm, smartd, linux, configuration, system-admin">
+<meta name="description" content="I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules. I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration. Here's the command ..." />
+<meta name="keywords" content="pihole, tcpdump, linux, configuration, system-admin">
 <meta property="og:site_name" content="mattcollins.io"/>
-<meta property="og:title" content="Friendly reminder to test notifications for MDADM and Smartd"/>
-<meta property="og:description" content="MDADM (when devices are in the configuration): mdadm --monitor --scan --test --oneshot Smartd: Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test: -M test After that, restart your smartd service. Be sure to remove the "-M test" line afterwards so you ..."/>
+<meta property="og:title" content="PiHole across VLANs"/>
+<meta property="og:description" content="I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules. I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration. Here's the command ..."/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html"/>
+<meta property="og:url" content="https://mattcollins.io/pihole-across-vlans.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2014-12-05 00:00:00-08:00"/>
+<meta property="article:published_time" content="2019-06-27 00:00:00-07:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://mattcollins.io/author/matt-collins.html">
 <meta property="article:section" content="Software"/>
-<meta property="article:tag" content="mdadm"/>
-<meta property="article:tag" content="smartd"/>
+<meta property="article:tag" content="pihole"/>
+<meta property="article:tag" content="tcpdump"/>
 <meta property="article:tag" content="linux"/>
 <meta property="article:tag" content="configuration"/>
 <meta property="article:tag" content="system-admin"/>
 <meta property="og:image" content="https://mattcollins.io/images/matt-collins.png">
-  <title>mattcollins.io &ndash; Friendly reminder to test notifications for MDADM and Smartd</title>
+  <title>mattcollins.io &ndash; PiHole across VLANs</title>
 </head>
 <body>
   <aside>
@@ -69,28 +69,23 @@
 
 <article>
   <header>
-    <h1 id="friendly-reminder-to-test-notifications-for-mdadm-and-smartd">Friendly reminder to test notifications for MDADM and Smartd</h1>
-    <p>Posted on Fri 05 December 2014 in <a href="https://mattcollins.io/category/software.html">Software</a></p>
+    <h1 id="pihole-across-vlans">PiHole across VLANs</h1>
+    <p>Posted on Thu 27 June 2019 in <a href="https://mattcollins.io/category/software.html">Software</a></p>
   </header>
   <div>
-    <h4>MDADM (when devices are in the configuration):</h4>
-<div class="highlight"><pre><span></span>mdadm --monitor --scan --test --oneshot
+    <p>I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules.</p>
+<p>I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration.</p>
+<p>Here's the command I ran to verify packets were making it to the pihole host (using a <code>dig testdomain.com @192.168.4.4</code>).</p>
+<div class="highlight"><pre><span></span>tcpdump -i eth0 host 192.168.8.10 and port 53 -n -s 0 -vvv
 </pre></div>
 
 
-<h4>Smartd:</h4>
-<p>Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test:</p>
-<div class="highlight"><pre><span></span>-M test
-</pre></div>
-
-
-<p>After that, restart your smartd service.</p>
-<p>Be sure to remove the "-M test" line afterwards so you won't get test notifications each time!</p>
+<p>The solution was to change the "Interface listening behavior" via the pihole web interface, on the settings, DNS page to be "Listen on all interfaces, permit all origins". After I saved this, requests immediately started working across my VLANs.</p>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://mattcollins.io/tag/mdadm.html">mdadm</a>
-      <a href="https://mattcollins.io/tag/smartd.html">smartd</a>
+      <a href="https://mattcollins.io/tag/pihole.html">pihole</a>
+      <a href="https://mattcollins.io/tag/tcpdump.html">tcpdump</a>
       <a href="https://mattcollins.io/tag/linux.html">linux</a>
       <a href="https://mattcollins.io/tag/configuration.html">configuration</a>
       <a href="https://mattcollins.io/tag/system-admin.html">system-admin</a>
@@ -100,7 +95,7 @@
     <h4>Related posts:</h4>
     <ul>
       <li><a href="https://mattcollins.io/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a></li>
-      <li><a href="https://mattcollins.io/pihole-across-vlans.html">PiHole across VLANs</a></li>
+      <li><a href="https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">Friendly reminder to test notifications for MDADM and Smartd</a></li>
     </ul>
   </div>
 </article>
@@ -128,9 +123,9 @@
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "name": "Friendly reminder to test notifications for MDADM and Smartd",
-  "headline": "Friendly reminder to test notifications for MDADM and Smartd",
-  "datePublished": "2014-12-05 00:00:00-08:00",
+  "name": "PiHole across VLANs",
+  "headline": "PiHole across VLANs",
+  "datePublished": "2019-06-27 00:00:00-07:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -138,8 +133,8 @@
     "url": "https://mattcollins.io/author/matt-collins.html"
   },
   "image": "https://mattcollins.io/images/matt-collins.png",
-  "url": "https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html",
-  "description": "MDADM (when devices are in the configuration): mdadm --monitor --scan --test --oneshot Smartd: Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test: -M test After that, restart your smartd service. Be sure to remove the "-M test" line afterwards so you ..."
+  "url": "https://mattcollins.io/pihole-across-vlans.html",
+  "description": "I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules. I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration. Here's the command ..."
 }
 </script></body>
 </html>
