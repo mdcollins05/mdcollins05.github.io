@@ -21,20 +21,21 @@
 
 
 <meta name="author" content="Matt Collins" />
-<meta name="description" content="I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules. I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration. Here's the command ..." />
-<meta name="keywords" content="pihole, tcpdump, linux, configuration, system-admin">
+<meta name="description" content="I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM. I wanted to ensure I had a good copy at all times, so I set up ..." />
+<meta name="keywords" content="lvm, lv, lvs, linux, configuration, system-admin">
 <meta property="og:site_name" content="mattcollins.io"/>
 <meta property="og:title" content="PiHole across VLANs"/>
-<meta property="og:description" content="I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules. I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration. Here's the command ..."/>
+<meta property="og:description" content="I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM. I wanted to ensure I had a good copy at all times, so I set up ..."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://mattcollins.io/pihole-across-vlans.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2019-06-27 00:00:00-07:00"/>
+<meta property="article:published_time" content="2020-04-09 00:00:00-07:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://mattcollins.io/author/matt-collins.html">
 <meta property="article:section" content="Software"/>
-<meta property="article:tag" content="pihole"/>
-<meta property="article:tag" content="tcpdump"/>
+<meta property="article:tag" content="lvm"/>
+<meta property="article:tag" content="lv"/>
+<meta property="article:tag" content="lvs"/>
 <meta property="article:tag" content="linux"/>
 <meta property="article:tag" content="configuration"/>
 <meta property="article:tag" content="system-admin"/>
@@ -70,22 +71,35 @@
 <article>
   <header>
     <h1 id="pihole-across-vlans">PiHole across VLANs</h1>
-    <p>Posted on Thu 27 June 2019 in <a href="https://mattcollins.io/category/software.html">Software</a></p>
+    <p>Posted on Thu 09 April 2020 in <a href="https://mattcollins.io/category/software.html">Software</a></p>
   </header>
   <div>
-    <p>I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules.</p>
-<p>I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration.</p>
-<p>Here's the command I ran to verify packets were making it to the pihole host (using <code>dig testdomain.com @192.168.4.4</code> as a test from the client).</p>
-<div class="highlight"><pre><span></span>tcpdump -i eth0 host 192.168.8.10 and port 53 -n -s 0 -vvv
+    <p>I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM.</p>
+<p>I wanted to ensure I had a good copy at all times, so I set up the new SSDs on a spare box using a Debian live USB. I manually created the PV, VG and LVs on the new disks but I didn't want to try to figure out DD over SSH with sudo to copy the disk contents over the network.</p>
+<p>Instead I found a post that showed how to use netcat to do the work. The transfer is unencrypted but given it's my home network on a trusted VLAN, I'm okay with this.</p>
+<p>The commands I used are:</p>
+<p>On the target host:</p>
+<div class="highlight"><pre><span></span><span class="x">sudo sh -c &quot;nc -l -p 6789 | pv | dd of=/dev/</span><span class="p">$</span><span class="nv">vg_name</span><span class="x">/</span><span class="p">$</span><span class="nv">lv_name</span><span class="x">&quot;</span>
 </pre></div>
 
 
-<p>The solution was to change the "Interface listening behavior" via the pihole web interface, on the settings, DNS page to be "Listen on all interfaces, permit all origins". After I saved this, requests immediately started working across my VLANs.</p>
+<p>On the sending host:</p>
+<div class="highlight"><pre><span></span><span class="x">sudo sh -c &quot;dd if=/dev/</span><span class="p">$</span><span class="nv">vg_name</span><span class="x">/</span><span class="p">$</span><span class="nv">lv_name</span><span class="x"> bs=4M | pv | nc </span><span class="p">$</span><span class="nv">target_host_ip</span><span class="x"> 6789 -q 10&quot;</span>
+</pre></div>
+
+
+<p>This is assuming that netcat (nc) and pv are installed. If not, they need to be installed with:</p>
+<div class="highlight"><pre><span></span>sudo apt-get install netcat pv
+</pre></div>
+
+
+<p>I manually created the LVs because I only had a few to copy over and I did not copy over the swap disk contents. Instead I recreated the LVs and ran a mkswap on them.</p>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://mattcollins.io/tag/pihole.html">pihole</a>
-      <a href="https://mattcollins.io/tag/tcpdump.html">tcpdump</a>
+      <a href="https://mattcollins.io/tag/lvm.html">lvm</a>
+      <a href="https://mattcollins.io/tag/lv.html">lv</a>
+      <a href="https://mattcollins.io/tag/lvs.html">lvs</a>
       <a href="https://mattcollins.io/tag/linux.html">linux</a>
       <a href="https://mattcollins.io/tag/configuration.html">configuration</a>
       <a href="https://mattcollins.io/tag/system-admin.html">system-admin</a>
@@ -96,6 +110,7 @@
     <ul>
       <li><a href="https://mattcollins.io/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a></li>
       <li><a href="https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">Friendly reminder to test notifications for MDADM and Smartd</a></li>
+      <li><a href="https://mattcollins.io/pihole-across-vlans.html">PiHole across VLANs</a></li>
     </ul>
   </div>
 </article>
@@ -125,7 +140,7 @@
   "@type": "BlogPosting",
   "name": "PiHole across VLANs",
   "headline": "PiHole across VLANs",
-  "datePublished": "2019-06-27 00:00:00-07:00",
+  "datePublished": "2020-04-09 00:00:00-07:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -134,7 +149,7 @@
   },
   "image": "https://mattcollins.io/images/matt-collins.png",
   "url": "https://mattcollins.io/pihole-across-vlans.html",
-  "description": "I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules. I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration. Here's the command ..."
+  "description": "I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM. I wanted to ensure I had a good copy at all times, so I set up ..."
 }
 </script></body>
 </html>
