@@ -30,7 +30,7 @@
 <meta property="og:url" content="https://mattcollins.io"/>
 <meta property="og:image" content="https://mattcollins.io/images/matt-collins.png">
 
-  <title>mattcollins.io &ndash; Posts by: Matt Collins</title>
+  <title>mattcollins.io &ndash; Tag: lv</title>
 </head>
 <body>
   <aside>
@@ -71,76 +71,6 @@
       <p>I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM.</p>
 <p>I wanted to ensure I had a good copy at all times, so I set up ...</p>
       <a class="btn" href="https://mattcollins.io/copying-lv-contents-over-the-lan.html">Continue reading</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://mattcollins.io/pihole-across-vlans.html">PiHole across VLANs</a></h2>
-    <p>
-      Posted on Thu 27 June 2019 in <a href="https://mattcollins.io/category/software.html">Software</a>
-      &#8226; Tagged with
-      <a href="https://mattcollins.io/tag/pihole.html">pihole</a>,      <a href="https://mattcollins.io/tag/tcpdump.html">tcpdump</a>,      <a href="https://mattcollins.io/tag/linux.html">linux</a>,      <a href="https://mattcollins.io/tag/configuration.html">configuration</a>,      <a href="https://mattcollins.io/tag/system-admin.html">system-admin</a>      &#8226; <a href="https://mattcollins.io/pihole-across-vlans.html#disqus_thread">Leave a comment</a>
-    </p>
-  </header>
-  <div>
-      <p>I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules.</p>
-<p>I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration.</p>
-<p>Here's the command ...</p>
-      <a class="btn" href="https://mattcollins.io/pihole-across-vlans.html">Continue reading</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">Friendly reminder to test notifications for MDADM and Smartd</a></h2>
-    <p>
-      Posted on Fri 05 December 2014 in <a href="https://mattcollins.io/category/software.html">Software</a>
-      &#8226; Tagged with
-      <a href="https://mattcollins.io/tag/mdadm.html">mdadm</a>,      <a href="https://mattcollins.io/tag/smartd.html">smartd</a>,      <a href="https://mattcollins.io/tag/linux.html">linux</a>,      <a href="https://mattcollins.io/tag/configuration.html">configuration</a>,      <a href="https://mattcollins.io/tag/system-admin.html">system-admin</a>      &#8226; <a href="https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html#disqus_thread">Leave a comment</a>
-    </p>
-  </header>
-  <div>
-      <h4>MDADM (when devices are in the configuration):</h4>
-<div class="highlight"><pre><span></span>mdadm --monitor --scan --test --oneshot
-</pre></div>
-
-
-<h4>Smartd:</h4>
-<p>Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test:</p>
-<div class="highlight"><pre><span></span>-M test
-</pre></div>
-
-
-<p>After that, restart your smartd service.</p>
-<p>Be sure to remove the "-M test" line afterwards so you ...</p>
-      <a class="btn" href="https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">Continue reading</a>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://mattcollins.io/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a></h2>
-    <p>
-      Posted on Sun 07 September 2014 in <a href="https://mattcollins.io/category/software.html">Software</a>
-      &#8226; Tagged with
-      <a href="https://mattcollins.io/tag/nginx.html">nginx</a>,      <a href="https://mattcollins.io/tag/linux.html">linux</a>,      <a href="https://mattcollins.io/tag/configuration.html">configuration</a>,      <a href="https://mattcollins.io/tag/system-admin.html">system-admin</a>      &#8226; <a href="https://mattcollins.io/nginx-allow-ips-http-authentication-for-others.html#disqus_thread">Leave a comment</a>
-    </p>
-  </header>
-  <div>
-      <p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
-<div class="highlight"><pre><span></span><span class="k">satisfy</span> <span class="s">any</span><span class="p">;</span>
-
-<span class="k">allow</span> <span class="mi">192</span><span class="s">.168.1.0/24</span><span class="p">;</span>
-<span class="k">deny</span> <span class="s">all</span><span class="p">;</span>
-
-<span class="k">auth_basic</span> <span class="s">&quot;Restricted&quot;</span><span class="p">;</span>
-<span class="k">auth_basic_user_file</span> <span class="s">htpasswd</span><span class="p">;</span>
-</pre></div>
-
-
-<p>I just saved that as "httprotect.inc" in ...</p>
-      <a class="btn" href="https://mattcollins.io/nginx-allow-ips-http-authentication-for-others.html">Continue reading</a>
   </div>
 </article>
 
