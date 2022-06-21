@@ -21,25 +21,26 @@
 
 
 <meta name="author" content="Matt Collins" />
-<meta name="description" content="I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules. I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration. Here's the command I ran to …" />
-<meta name="keywords" content="pihole, tcpdump, linux, configuration, system-admin">
+<meta name="description" content="(needs to be written but pihole DNS, local webservers, lets encrypt certs via DNS and VPNs)" />
+<meta name="keywords" content="webservers, vpn, lan, linux, configuration, system-admin">
 <meta property="og:site_name" content="mattcollins.io"/>
-<meta property="og:title" content="PiHole across VLANs"/>
-<meta property="og:description" content="I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules. I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration. Here's the command I ran to …"/>
+<meta property="og:title" content="Make private web services only accessible via LAN (and VPN)"/>
+<meta property="og:description" content="(needs to be written but pihole DNS, local webservers, lets encrypt certs via DNS and VPNs)"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://mattcollins.io/pihole-across-vlans.html"/>
+<meta property="og:url" content="https://mattcollins.io/drafts/make-private-web-services-only-accessible-via-lan-and-vpn.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2019-06-27 00:00:00-07:00"/>
+<meta property="article:published_time" content="2022-06-20 00:00:00-07:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://mattcollins.io/author/matt-collins.html">
 <meta property="article:section" content="Software"/>
-<meta property="article:tag" content="pihole"/>
-<meta property="article:tag" content="tcpdump"/>
+<meta property="article:tag" content="webservers"/>
+<meta property="article:tag" content="vpn"/>
+<meta property="article:tag" content="lan"/>
 <meta property="article:tag" content="linux"/>
 <meta property="article:tag" content="configuration"/>
 <meta property="article:tag" content="system-admin"/>
 <meta property="og:image" content="https://mattcollins.io/images/matt-collins.png">
-  <title>mattcollins.io &ndash; PiHole across VLANs</title>
+  <title>mattcollins.io &ndash; Make private web services only accessible via LAN (and VPN)</title>
 </head>
 <body>
   <aside>
@@ -69,35 +70,21 @@
 
 <article>
   <header>
-    <h1 id="pihole-across-vlans">PiHole across VLANs</h1>
-    <p>Posted on Thu 27 June 2019 in <a href="https://mattcollins.io/category/software.html">Software</a></p>
+    <h1 id="make-private-web-services-only-accessible-via-lan-and-vpn">Make private web services only accessible via LAN (and VPN)</h1>
+    <p>Posted on Mon 20 June 2022 in <a href="https://mattcollins.io/category/software.html">Software</a></p>
   </header>
   <div>
-    <p>I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules.</p>
-<p>I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration.</p>
-<p>Here's the command I ran to verify packets were making it to the pihole host (using <code>dig testdomain.com @192.168.4.4</code> as a test from the client).</p>
-<div class="highlight"><pre><span></span><code>tcpdump -i eth0 host 192.168.8.10 and port 53 -n -s 0 -vvv
-</code></pre></div>
-
-<p>The solution was to change the "Interface listening behavior" via the pihole web interface, on the settings, DNS page to be "Listen on all interfaces, permit all origins". After I saved this, requests immediately started working across my VLANs.</p>
+    <p>(needs to be written but pihole DNS, local webservers, lets encrypt certs via DNS and VPNs)</p>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://mattcollins.io/tag/pihole.html">pihole</a>
-      <a href="https://mattcollins.io/tag/tcpdump.html">tcpdump</a>
+      <a href="https://mattcollins.io/tag/webservers.html">webservers</a>
+      <a href="https://mattcollins.io/tag/vpn.html">vpn</a>
+      <a href="https://mattcollins.io/tag/lan.html">lan</a>
       <a href="https://mattcollins.io/tag/linux.html">linux</a>
       <a href="https://mattcollins.io/tag/configuration.html">configuration</a>
       <a href="https://mattcollins.io/tag/system-admin.html">system-admin</a>
     </p>
-  </div>
-  <div class="related-posts">
-    <h4>Related posts:</h4>
-    <ul>
-      <li><a href="https://mattcollins.io/hosting-two-webservers-on-port-80.html">Hosting two webservers on port 80</a></li>
-      <li><a href="https://mattcollins.io/copying-lv-contents-over-the-lan.html">Copying LV contents over the LAN</a></li>
-      <li><a href="https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">Friendly reminder to test notifications for MDADM and Smartd</a></li>
-      <li><a href="https://mattcollins.io/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a></li>
-    </ul>
   </div>
 </article>
 
@@ -124,9 +111,9 @@
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "name": "PiHole across VLANs",
-  "headline": "PiHole across VLANs",
-  "datePublished": "2019-06-27 00:00:00-07:00",
+  "name": "Make private web services only accessible via LAN (and VPN)",
+  "headline": "Make private web services only accessible via LAN (and VPN)",
+  "datePublished": "2022-06-20 00:00:00-07:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -134,8 +121,8 @@
     "url": "https://mattcollins.io/author/matt-collins.html"
   },
   "image": "https://mattcollins.io/images/matt-collins.png",
-  "url": "https://mattcollins.io/pihole-across-vlans.html",
-  "description": "I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules. I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration. Here's the command I ran to …"
+  "url": "https://mattcollins.io/drafts/make-private-web-services-only-accessible-via-lan-and-vpn.html",
+  "description": "(needs to be written but pihole DNS, local webservers, lets encrypt certs via DNS and VPNs)"
 }
 </script></body>
 </html>

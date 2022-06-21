@@ -21,11 +21,11 @@
 
 
 <meta name="author" content="Matt Collins" />
-<meta name="description" content="I run a couple of servers with PiHole on them for local DNS and I wanted to host another webserver on one of the boxes running PiHole. You can't assign two services to the same port on the same interface, and I only had one physical interface. How I ..." />
+<meta name="description" content="I run a couple of servers with PiHole on them for local DNS and I wanted to host another webserver on one of the boxes running PiHole. You can't assign two services to the same port on the same interface, and I only had one physical interface. How I accomplished …" />
 <meta name="keywords" content="iptables, webserver, tcp, linux, configuration, system-admin">
 <meta property="og:site_name" content="mattcollins.io"/>
 <meta property="og:title" content="Hosting two webservers on port 80"/>
-<meta property="og:description" content="I run a couple of servers with PiHole on them for local DNS and I wanted to host another webserver on one of the boxes running PiHole. You can't assign two services to the same port on the same interface, and I only had one physical interface. How I ..."/>
+<meta property="og:description" content="I run a couple of servers with PiHole on them for local DNS and I wanted to host another webserver on one of the boxes running PiHole. You can't assign two services to the same port on the same interface, and I only had one physical interface. How I accomplished …"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://mattcollins.io/hosting-two-webservers-on-port-80.html"/>
 <meta property="og:type" content="article"/>
@@ -76,7 +76,7 @@
   <div>
     <p>I run a couple of servers with PiHole on them for local DNS and I wanted to host another webserver on one of the boxes running PiHole. You can't assign two services to the same port on the same interface, and I only had one physical interface.</p>
 <p>How I accomplished this, without disabling the built in PiHole webserver is to run my other webserver on port 800 (any other port will do though). I then added a second IP (static) to my existing interface. I edited my <code>/etc/networks/interfaces.d/eth0</code> file to look like:</p>
-<div class="highlight"><pre><span></span>auto eth0
+<div class="highlight"><pre><span></span><code>auto eth0
 allow-hotplug eth0
 iface eth0 inet dhcp
 
@@ -84,13 +84,11 @@ auto eth0:0
 iface eth0:0 inet static
   address 192.168.1.101
   netmask 255.255.255.0
-</pre></div>
-
+</code></pre></div>
 
 <p>I then added an iptables rule to route to my alternative webserver based on destination IP. 192.168.1.20 is the DHCP assigned IP address for the same box.</p>
-<div class="highlight"><pre><span></span>sudo iptables -t nat -A PREROUTING -p tcp --dport 80 --dst 192.168.1.20 -j DNAT --to-destination 192.168.1.20:800
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo iptables -t nat -A PREROUTING -p tcp --dport 80 --dst 192.168.1.20 -j DNAT --to-destination 192.168.1.20:800
+</code></pre></div>
 
 <p>From that point on, as long as I'm using the right IP address, I can access whichever webserver I want and get the content I expect.</p>
 <p>I also added a local DNS record in my PiHoles with the IP, so things had a nice name to access them.</p>
@@ -108,10 +106,10 @@ iface eth0:0 inet static
   <div class="related-posts">
     <h4>Related posts:</h4>
     <ul>
-      <li><a href="https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">Friendly reminder to test notifications for MDADM and Smartd</a></li>
-      <li><a href="https://mattcollins.io/pihole-across-vlans.html">PiHole across VLANs</a></li>
-      <li><a href="https://mattcollins.io/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a></li>
       <li><a href="https://mattcollins.io/copying-lv-contents-over-the-lan.html">Copying LV contents over the LAN</a></li>
+      <li><a href="https://mattcollins.io/pihole-across-vlans.html">PiHole across VLANs</a></li>
+      <li><a href="https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">Friendly reminder to test notifications for MDADM and Smartd</a></li>
+      <li><a href="https://mattcollins.io/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a></li>
     </ul>
   </div>
 </article>
@@ -150,7 +148,7 @@ iface eth0:0 inet static
   },
   "image": "https://mattcollins.io/images/matt-collins.png",
   "url": "https://mattcollins.io/hosting-two-webservers-on-port-80.html",
-  "description": "I run a couple of servers with PiHole on them for local DNS and I wanted to host another webserver on one of the boxes running PiHole. You can't assign two services to the same port on the same interface, and I only had one physical interface. How I ..."
+  "description": "I run a couple of servers with PiHole on them for local DNS and I wanted to host another webserver on one of the boxes running PiHole. You can't assign two services to the same port on the same interface, and I only had one physical interface. How I accomplished …"
 }
 </script></body>
 </html>

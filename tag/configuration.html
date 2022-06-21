@@ -69,7 +69,7 @@
   </header>
   <div>
       <p>I run a couple of servers with PiHole on them for local DNS and I wanted to host another webserver on one of the boxes running PiHole. You can't assign two services to the same port on the same interface, and I only had one physical interface.</p>
-<p>How I ...</p>
+<p>How I accomplished …</p>
       <a class="btn" href="https://mattcollins.io/hosting-two-webservers-on-port-80.html">Continue reading</a>
   </div>
   <hr />
@@ -85,7 +85,7 @@
   </header>
   <div>
       <p>I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM.</p>
-<p>I wanted to ensure I had a good copy at all times, so I set up ...</p>
+<p>I wanted to ensure I had a good copy at all times, so I set up the new …</p>
       <a class="btn" href="https://mattcollins.io/copying-lv-contents-over-the-lan.html">Continue reading</a>
   </div>
   <hr />
@@ -102,7 +102,7 @@
   <div>
       <p>I spent way too long bashing my head why my firewall rules weren't allowing traffic to my pihole. Turns out, it wasn't my firewall rules.</p>
 <p>I finally used tcpdump to figure out that the rules were working and that it was a pihole configuration.</p>
-<p>Here's the command ...</p>
+<p>Here's the command I ran to …</p>
       <a class="btn" href="https://mattcollins.io/pihole-across-vlans.html">Continue reading</a>
   </div>
   <hr />
@@ -118,18 +118,16 @@
   </header>
   <div>
       <h4>MDADM (when devices are in the configuration):</h4>
-<div class="highlight"><pre><span></span>mdadm --monitor --scan --test --oneshot
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>mdadm --monitor --scan --test --oneshot
+</code></pre></div>
 
 <h4>Smartd:</h4>
 <p>Add the following to your smartd.conf at the end of the "DEVICESCAN" lines you want to test:</p>
-<div class="highlight"><pre><span></span>-M test
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>-M test
+</code></pre></div>
 
 <p>After that, restart your smartd service.</p>
-<p>Be sure to remove the "-M test" line afterwards so you ...</p>
+<p>Be sure to remove the "-M test" line afterwards so you …</p>
       <a class="btn" href="https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">Continue reading</a>
   </div>
   <hr />
@@ -145,17 +143,16 @@
   </header>
   <div>
       <p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
-<div class="highlight"><pre><span></span><span class="k">satisfy</span> <span class="s">any</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">satisfy</span><span class="w"> </span><span class="s">any</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">allow</span> <span class="mi">192</span><span class="s">.168.1.0/24</span><span class="p">;</span>
-<span class="k">deny</span> <span class="s">all</span><span class="p">;</span>
+<span class="k">allow</span><span class="w"> </span><span class="mi">192</span><span class="s">.168.1.0/24</span><span class="p">;</span><span class="w"></span>
+<span class="k">deny</span><span class="w"> </span><span class="s">all</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">auth_basic</span> <span class="s">&quot;Restricted&quot;</span><span class="p">;</span>
-<span class="k">auth_basic_user_file</span> <span class="s">htpasswd</span><span class="p">;</span>
-</pre></div>
+<span class="k">auth_basic</span><span class="w"> </span><span class="s">&quot;Restricted&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="k">auth_basic_user_file</span><span class="w"> </span><span class="s">htpasswd</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
 
-
-<p>I just saved that as "httprotect.inc" in ...</p>
+<p>I just saved that as …</p>
       <a class="btn" href="https://mattcollins.io/nginx-allow-ips-http-authentication-for-others.html">Continue reading</a>
   </div>
 </article>

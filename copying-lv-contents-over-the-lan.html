@@ -21,11 +21,11 @@
 
 
 <meta name="author" content="Matt Collins" />
-<meta name="description" content="I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM. I wanted to ensure I had a good copy at all times, so I set up ..." />
+<meta name="description" content="I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM. I wanted to ensure I had a good copy at all times, so I set up the new …" />
 <meta name="keywords" content="lvm, lv, lvs, linux, configuration, system-admin">
 <meta property="og:site_name" content="mattcollins.io"/>
 <meta property="og:title" content="Copying LV contents over the LAN"/>
-<meta property="og:description" content="I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM. I wanted to ensure I had a good copy at all times, so I set up ..."/>
+<meta property="og:description" content="I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM. I wanted to ensure I had a good copy at all times, so I set up the new …"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://mattcollins.io/copying-lv-contents-over-the-lan.html"/>
 <meta property="og:type" content="article"/>
@@ -79,19 +79,16 @@
 <p>Instead I found a post that showed how to use netcat to do the work. The transfer is unencrypted but given it's my home network on a trusted VLAN, I'm okay with this.</p>
 <p>The commands I used are:</p>
 <p>On the target host:</p>
-<div class="highlight"><pre><span></span><span class="x">sudo sh -c &quot;nc -l -p 6789 | pv | dd of=/dev/</span><span class="p">$</span><span class="nv">vg_name</span><span class="x">/</span><span class="p">$</span><span class="nv">lv_name</span><span class="x">&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo sh -c &quot;nc -l -p 6789 | pv | dd of=/dev/$vg_name/$lv_name&quot;
+</code></pre></div>
 
 <p>On the sending host:</p>
-<div class="highlight"><pre><span></span><span class="x">sudo sh -c &quot;dd if=/dev/</span><span class="p">$</span><span class="nv">vg_name</span><span class="x">/</span><span class="p">$</span><span class="nv">lv_name</span><span class="x"> bs=4M | pv | nc </span><span class="p">$</span><span class="nv">target_host_ip</span><span class="x"> 6789 -q 10&quot;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nv">sudo</span> <span class="nv">sh</span> <span class="o">-</span><span class="nv">c</span> <span class="s2">&quot;</span><span class="s">dd if=/dev/$vg_name/$lv_name bs=4M | pv | nc $target_host_ip 6789 -q 10</span><span class="s2">&quot;</span>
+</code></pre></div>
 
 <p>This is assuming that netcat (nc) and pv are installed. If not, they need to be installed with:</p>
-<div class="highlight"><pre><span></span>sudo apt-get install netcat pv
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>sudo apt-get install netcat pv
+</code></pre></div>
 
 <p>I manually created the LVs because I only had a few to copy over and I did not copy over the swap disk contents. Instead I recreated the LVs and ran a mkswap on them.</p>
   </div>
@@ -108,10 +105,10 @@
   <div class="related-posts">
     <h4>Related posts:</h4>
     <ul>
-      <li><a href="https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">Friendly reminder to test notifications for MDADM and Smartd</a></li>
-      <li><a href="https://mattcollins.io/pihole-across-vlans.html">PiHole across VLANs</a></li>
-      <li><a href="https://mattcollins.io/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a></li>
       <li><a href="https://mattcollins.io/hosting-two-webservers-on-port-80.html">Hosting two webservers on port 80</a></li>
+      <li><a href="https://mattcollins.io/pihole-across-vlans.html">PiHole across VLANs</a></li>
+      <li><a href="https://mattcollins.io/friendly-reminder-to-test-notifications-for-mdadm-and-smartd.html">Friendly reminder to test notifications for MDADM and Smartd</a></li>
+      <li><a href="https://mattcollins.io/nginx-allow-ips-http-authentication-for-others.html">Nginx: Allow $IP(s), HTTP authentication for others</a></li>
     </ul>
   </div>
 </article>
@@ -150,7 +147,7 @@
   },
   "image": "https://mattcollins.io/images/matt-collins.png",
   "url": "https://mattcollins.io/copying-lv-contents-over-the-lan.html",
-  "description": "I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM. I wanted to ensure I had a good copy at all times, so I set up ..."
+  "description": "I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM. I wanted to ensure I had a good copy at all times, so I set up the new …"
 }
 </script></body>
 </html>
