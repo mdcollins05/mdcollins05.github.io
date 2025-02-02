@@ -22,15 +22,15 @@
 
     <meta name="author" content="Matt Collins" />
     <meta name="description" content="" />
-<meta property="og:site_name" content="mattcollins.io"/>
+<meta property="og:site_name" content="mattdcollins.com"/>
 <meta property="og:type" content="blog"/>
-<meta property="og:title" content="mattcollins.io"/>
+<meta property="og:title" content="mattdcollins.com"/>
 <meta property="og:description" content=""/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://mattdcollins.com"/>
 <meta property="og:image" content="https://mattdcollins.com/images/matt-collins.png">
 
-  <title>mattcollins.io &ndash; Tag: system-admin</title>
+  <title>mattdcollins.com &ndash; Tag: system-admin</title>
 </head>
 <body>
   <aside>
@@ -42,9 +42,8 @@
       <nav>
         <ul class="list">
           <li><a href="https://mattdcollins.com/pages/about-me.html">About Me</a></li>
-          <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
-          <li><a href="http://python.org/" target="_blank">Python.org</a></li>
-          <li><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+          <li><a href="https://github.com/mdcollins05/" target="_blank">Github</a></li>
+          <li><a href="https://www.linkedin.com/in/mdcollins05/" target="_blank">LinkedIn</a></li>
         </ul>
       </nav>
       <ul class="social">
@@ -158,16 +157,16 @@
   </header>
   <div>
       <p>Lets say you wanted to auth any HTTP connections outside your local lan. You can totally do that with nginx. Here's the configuration bit that does it:</p>
-<div class="highlight"><pre><span></span><code><span class="k">satisfy</span><span class="w"> </span><span class="s">any</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">satisfy</span><span class="w"> </span><span class="s">any</span><span class="p">;</span>
 
-<span class="k">allow</span><span class="w"> </span><span class="mi">192</span><span class="s">.168.1.0/24</span><span class="p">;</span><span class="w"></span>
-<span class="k">deny</span><span class="w"> </span><span class="s">all</span><span class="p">;</span><span class="w"></span>
+<span class="k">allow</span><span class="w"> </span><span class="mi">192</span><span class="s">.168.1.0/24</span><span class="p">;</span>
+<span class="k">deny</span><span class="w"> </span><span class="s">all</span><span class="p">;</span>
 
-<span class="k">auth_basic</span><span class="w"> </span><span class="s">&quot;Restricted&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="k">auth_basic_user_file</span><span class="w"> </span><span class="s">htpasswd</span><span class="p">;</span><span class="w"></span>
+<span class="k">auth_basic</span><span class="w"> </span><span class="s">&quot;Restricted&quot;</span><span class="p">;</span>
+<span class="k">auth_basic_user_file</span><span class="w"> </span><span class="s">htpasswd</span><span class="p">;</span>
 </code></pre></div>
 
-<p>I just saved that as …</p>
+<p>I just saved that as "httprotect.inc" in my …</p>
       <a class="btn" href="https://mattdcollins.com/nginx-allow-ips-http-authentication-for-others.html">Continue reading</a>
   </div>
 </article>
@@ -188,7 +187,7 @@
 {
   "@context" : "http://schema.org",
   "@type" : "Blog",
-  "name": " mattcollins.io ",
+  "name": " mattdcollins.com ",
   "url" : "https://mattdcollins.com",
   "image": "https://mattdcollins.com/images/matt-collins.png",
   "description": ""

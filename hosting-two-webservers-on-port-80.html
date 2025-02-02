@@ -23,7 +23,7 @@
 <meta name="author" content="Matt Collins" />
 <meta name="description" content="I run a couple of servers with PiHole on them for local DNS and I wanted to host another webserver on one of the boxes running PiHole. You can't assign two services to the same port on the same interface, and I only had one physical interface. How I accomplished …" />
 <meta name="keywords" content="iptables, webserver, tcp, linux, configuration, system-admin">
-<meta property="og:site_name" content="mattcollins.io"/>
+<meta property="og:site_name" content="mattdcollins.com"/>
 <meta property="og:title" content="Hosting two webservers on port 80"/>
 <meta property="og:description" content="I run a couple of servers with PiHole on them for local DNS and I wanted to host another webserver on one of the boxes running PiHole. You can't assign two services to the same port on the same interface, and I only had one physical interface. How I accomplished …"/>
 <meta property="og:locale" content="en_US"/>
@@ -40,7 +40,7 @@
 <meta property="article:tag" content="configuration"/>
 <meta property="article:tag" content="system-admin"/>
 <meta property="og:image" content="https://mattdcollins.com/images/matt-collins.png">
-  <title>mattcollins.io &ndash; Hosting two webservers on port 80</title>
+  <title>mattdcollins.com &ndash; Hosting two webservers on port 80</title>
 </head>
 <body>
   <aside>
@@ -52,9 +52,8 @@
       <nav>
         <ul class="list">
           <li><a href="https://mattdcollins.com/pages/about-me.html">About Me</a></li>
-          <li><a href="http://getpelican.com/" target="_blank">Pelican</a></li>
-          <li><a href="http://python.org/" target="_blank">Python.org</a></li>
-          <li><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+          <li><a href="https://github.com/mdcollins05/" target="_blank">Github</a></li>
+          <li><a href="https://www.linkedin.com/in/mdcollins05/" target="_blank">LinkedIn</a></li>
         </ul>
       </nav>
       <ul class="social">
@@ -76,14 +75,14 @@
   <div>
     <p>I run a couple of servers with PiHole on them for local DNS and I wanted to host another webserver on one of the boxes running PiHole. You can't assign two services to the same port on the same interface, and I only had one physical interface.</p>
 <p>How I accomplished this, without disabling the built in PiHole webserver is to run my other webserver on port 800 (any other port will do though). I then added a second IP (static) to my existing interface. I edited my <code>/etc/networks/interfaces.d/eth0</code> file to look like:</p>
-<div class="highlight"><pre><span></span><code>auto eth0
-allow-hotplug eth0
-iface eth0 inet dhcp
+<div class="highlight"><pre><span></span><code><span class="kt">auto</span><span class="w"> </span><span class="nx">eth0</span>
+<span class="nx">allow</span><span class="o">-</span><span class="nx">hotplug</span><span class="w"> </span><span class="nx">eth0</span>
+<span class="nx">iface</span><span class="w"> </span><span class="nx">eth0</span><span class="w"> </span><span class="nx">inet</span><span class="w"> </span><span class="nx">dhcp</span>
 
-auto eth0:0
-iface eth0:0 inet static
-  address 192.168.1.101
-  netmask 255.255.255.0
+<span class="kt">auto</span><span class="w"> </span><span class="nx">eth0</span><span class="p">:</span><span class="mi">0</span>
+<span class="nx">iface</span><span class="w"> </span><span class="nx">eth0</span><span class="p">:</span><span class="mi">0</span><span class="w"> </span><span class="nx">inet</span><span class="w"> </span><span class="nx">static</span>
+<span class="w">  </span><span class="nx">address</span><span class="w"> </span><span class="m m-Double">192.168.1.101</span>
+<span class="w">  </span><span class="nx">netmask</span><span class="w"> </span><span class="m m-Double">255.255.255.0</span>
 </code></pre></div>
 
 <p>I then added an iptables rule to route to my alternative webserver based on destination IP. 192.168.1.20 is the DHCP assigned IP address for the same box.</p>
@@ -127,7 +126,7 @@ iface eth0:0 inet static
 {
   "@context" : "http://schema.org",
   "@type" : "Blog",
-  "name": " mattcollins.io ",
+  "name": " mattdcollins.com ",
   "url" : "https://mattdcollins.com",
   "image": "https://mattdcollins.com/images/matt-collins.png",
   "description": ""
