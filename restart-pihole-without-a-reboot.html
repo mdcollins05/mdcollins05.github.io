@@ -21,26 +21,24 @@
 
 
 <meta name="author" content="Matt Collins" />
-<meta name="description" content="I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM. I wanted to ensure I had a good copy at all times, so I set up the new …" />
-<meta name="keywords" content="lvm, lv, lvs, linux, configuration, system-admin">
+<meta name="description" content="For whatever reason I had a hell of a time getting my piholes to work after the recent upgrade to version 6. One didn't have a web interface and in some circumstance it consumed all of my memory on the old Raspberry Pi it's running on. The other just outright …" />
+<meta name="keywords" content="pihole, linux, configuration, system-admin">
 <meta property="og:site_name" content="mattdcollins.com"/>
-<meta property="og:title" content="Copying LV contents over the LAN"/>
-<meta property="og:description" content="I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM. I wanted to ensure I had a good copy at all times, so I set up the new …"/>
+<meta property="og:title" content="Restart PiHole without a reboot"/>
+<meta property="og:description" content="For whatever reason I had a hell of a time getting my piholes to work after the recent upgrade to version 6. One didn't have a web interface and in some circumstance it consumed all of my memory on the old Raspberry Pi it's running on. The other just outright …"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://mattdcollins.com/copying-lv-contents-over-the-lan.html"/>
+<meta property="og:url" content="https://mattdcollins.com/restart-pihole-without-a-reboot.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2020-04-09 00:00:00-07:00"/>
+<meta property="article:published_time" content="2025-02-20 00:00:00-08:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://mattdcollins.com/author/matt-collins.html">
 <meta property="article:section" content="Software"/>
-<meta property="article:tag" content="lvm"/>
-<meta property="article:tag" content="lv"/>
-<meta property="article:tag" content="lvs"/>
+<meta property="article:tag" content="pihole"/>
 <meta property="article:tag" content="linux"/>
 <meta property="article:tag" content="configuration"/>
 <meta property="article:tag" content="system-admin"/>
 <meta property="og:image" content="https://mattdcollins.com/images/matt-collins.png">
-  <title>mattdcollins.com &ndash; Copying LV contents over the LAN</title>
+  <title>mattdcollins.com &ndash; Restart PiHole without a reboot</title>
 </head>
 <body>
   <aside>
@@ -69,33 +67,27 @@
 
 <article>
   <header>
-    <h1 id="copying-lv-contents-over-the-lan">Copying LV contents over the LAN</h1>
-    <p>Posted on Thu 09 April 2020 in <a href="https://mattdcollins.com/category/software.html">Software</a></p>
+    <h1 id="restart-pihole-without-a-reboot">Restart PiHole without a reboot</h1>
+    <p>Posted on Thu 20 February 2025 in <a href="https://mattdcollins.com/category/software.html">Software</a></p>
   </header>
   <div>
-    <p>I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM.</p>
-<p>I wanted to ensure I had a good copy at all times, so I set up the new SSDs on a spare box using a Debian live USB. I manually created the PV, VG and LVs on the new disks but I didn't want to try to figure out DD over SSH with sudo to copy the disk contents over the network.</p>
-<p>Instead I found a post that showed how to use netcat to do the work. The transfer is unencrypted but given it's my home network on a trusted VLAN, I'm okay with this.</p>
-<p>The commands I used are:</p>
-<p>On the target host:</p>
-<div class="highlight"><pre><span></span><code>sudo sh -c &quot;nc -l -p 6789 | pv | dd of=/dev/$vg_name/$lv_name&quot;
+    <p>For whatever reason I had a hell of a time getting my piholes to work after the recent upgrade to version 6. One didn't have a web interface and in some circumstance it consumed all of my memory on the old Raspberry Pi it's running on. The other just outright didn't migrate my config and left things in a bad way.</p>
+<p>In both cases, I'd prefer to restart the pihole service instead of the whole box. There's no pihole CLI option to do so, it seems. I did find out that I could restart it via systemd, using the following command.</p>
+<div class="highlight"><pre><span></span><code>sudo systemctl restart pihole-FTL
 </code></pre></div>
 
-<p>On the sending host:</p>
-<div class="highlight"><pre><span></span><code>sudo sh -c &quot;dd if=/dev/$vg_name/$lv_name bs=4M | pv | nc $target_host_ip 6789 -q 10&quot;
+<p>That allowed me to make changes to the config file manually at <code>/etc/pihole/pihole.toml</code> and restart without a reboot.</p>
+<p>Additionally, I wanted to clean up the packages that were no longer needed from pihole version 5. The following did it for Debian.</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get purge idn2 lighttpd php8.2-cgi php8.2-common php8.2-intl php8.2-json php8.2-sqlite3 php8.2-xml
+sudo apt-get autoremove --purge
 </code></pre></div>
 
-<p>This is assuming that netcat (nc) and pv are installed. If not, they need to be installed with:</p>
-<div class="highlight"><pre><span></span><code>sudo apt-get install netcat pv
-</code></pre></div>
-
-<p>I manually created the LVs because I only had a few to copy over and I did not copy over the swap disk contents. Instead I recreated the LVs and ran a mkswap on them.</p>
+<p>Be sure to check the list of packages being removed from the autoremove. In my case it was only <code>libsodium23</code>.</p>
+<p>A bit of a frustrating experience but the result is nice. I like the new looks and the fact that the web port is easily changed and no longer requires a bunch of other dependencies is great.</p>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://mattdcollins.com/tag/lvm.html">lvm</a>
-      <a href="https://mattdcollins.com/tag/lv.html">lv</a>
-      <a href="https://mattdcollins.com/tag/lvs.html">lvs</a>
+      <a href="https://mattdcollins.com/tag/pihole.html">pihole</a>
       <a href="https://mattdcollins.com/tag/linux.html">linux</a>
       <a href="https://mattdcollins.com/tag/configuration.html">configuration</a>
       <a href="https://mattdcollins.com/tag/system-admin.html">system-admin</a>
@@ -104,10 +96,10 @@
   <div class="related-posts">
     <h4>Related posts:</h4>
     <ul>
-      <li><a href="https://mattdcollins.com/restart-pihole-without-a-reboot.html">Restart PiHole without a reboot</a></li>
+      <li><a href="https://mattdcollins.com/pihole-across-vlans.html">PiHole across VLANs</a></li>
       <li><a href="https://mattdcollins.com/make-private-web-services-only-accessible-via-lan-and-vpn.html">Make private web services only accessible via LAN (and VPN)</a></li>
       <li><a href="https://mattdcollins.com/hosting-two-webservers-on-port-80.html">Hosting two webservers on port 80</a></li>
-      <li><a href="https://mattdcollins.com/pihole-across-vlans.html">PiHole across VLANs</a></li>
+      <li><a href="https://mattdcollins.com/copying-lv-contents-over-the-lan.html">Copying LV contents over the LAN</a></li>
     </ul>
   </div>
 </article>
@@ -135,9 +127,9 @@
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "name": "Copying LV contents over the LAN",
-  "headline": "Copying LV contents over the LAN",
-  "datePublished": "2020-04-09 00:00:00-07:00",
+  "name": "Restart PiHole without a reboot",
+  "headline": "Restart PiHole without a reboot",
+  "datePublished": "2025-02-20 00:00:00-08:00",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -145,8 +137,8 @@
     "url": "https://mattdcollins.com/author/matt-collins.html"
   },
   "image": "https://mattdcollins.com/images/matt-collins.png",
-  "url": "https://mattdcollins.com/copying-lv-contents-over-the-lan.html",
-  "description": "I've been upgrading my storage server's main disks from hard drives to SSDs. The disks are a software (MDADM) raid 1 with LVM on top to partition out storage to each VM. I wanted to ensure I had a good copy at all times, so I set up the new …"
+  "url": "https://mattdcollins.com/restart-pihole-without-a-reboot.html",
+  "description": "For whatever reason I had a hell of a time getting my piholes to work after the recent upgrade to version 6. One didn't have a web interface and in some circumstance it consumed all of my memory on the old Raspberry Pi it's running on. The other just outright …"
 }
 </script></body>
 </html>
